@@ -61,6 +61,7 @@ function storeValues(value) {
 }
 
 function calculate_results() {
+  if (num_2 == 0) return num_1;
   let oP = operator;
   let n1 = num_1;
   let n2 = num_2;
@@ -103,6 +104,7 @@ function negativeNumber() {
 }
 
 function addDot() {
+  if (document.querySelector(".results").innerText.includes(".")) return;
   document.querySelector(".results").innerText =
     operator == null ? (num_1 += ".") : (num_2 += ".");
 }

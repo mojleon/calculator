@@ -19,9 +19,11 @@ div {
 }
 
 .calculator {
-  padding: 32px;
+  padding: 40px 34px;
   display: flex;
   flex-direction: column;
+  border-radius: calc(var(--border-radius) * 2);
+  box-shadow: -9px -9px 15px #ffffff10, 9px 9px 45px #00000010;
 }
 
 .results {
