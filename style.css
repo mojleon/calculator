@@ -60,6 +60,7 @@ button[id="0"] {
   width: calc(calc(var(--buttonSize) * 2) + 16px);
 }
 
-button:hover {
+button:hover,
+.butColor {
   background-color: greenyellow;
 }

@@ -1,6 +1,6 @@
 let num_1 = 0;
 let num_2 = 0;
-let maxNum = 999999;
+let maxNum = 7;
 let operator = null;
 
 function add(num_1, num_2) {
@@ -69,7 +69,7 @@ function calculate_results() {
   num_1 = operate(oP, n1, n2);
   num_2 = 0;
 
-  return clamp(num_1, 0, maxNum);
+  return num_1.toString(maxNum);
 }
 
 function reset() {
@@ -108,3 +108,36 @@ function addDot() {
 }
 
 document.getElementById("=").addEventListener("click", operate());
+
+document.addEventListener("keyup", (key) => {
+  let acceptableValues = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    ".",
+    "/",
+    "*",
+    "-",
+    "+",
+    "=",
+    "%",
+  ];
+
+  if (!acceptableValues.includes(key.key)) return;
+
+  let button = document.getElementById(key.key);
+
+  button.classList.add("butColor");
+  setTimeout(() => {
+    button.classList.remove("butColor");
+  }, 100);
+
+  button.click();
+});
