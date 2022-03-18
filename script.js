@@ -1,6 +1,6 @@
 let num_1 = 0;
 let num_2 = 0;
-let maxNum = 7;
+let maxNum = 999999999;
 let operator = null;
 
 function add(num_1, num_2) {
@@ -42,22 +42,25 @@ buttons.forEach((but) => {
 });
 
 function storeValues(value) {
-  if (value.match(/=/g))
-    return (document.querySelector(".results").innerText = calculate_results());
+  let resultDiv = document.querySelector(".results");
+
+  if (value.match(/=/g)) return (resultDiv.innerText = calculate_results());
 
   if (value.match(/\W/g)) {
-    if (operator != null)
-      document.querySelector(".results").innerText = calculate_results();
+    if (operator != null) resultDiv.innerText = calculate_results();
+    else resultDiv.innerText = value;
+
     return (operator = value);
   }
+
+  if (+resultDiv.innerHTML > maxNum) return;
 
   if (operator == null && num_1 == 0) num_1 = value;
   else if (operator != null && num_2 == 0) num_2 = value;
   else if (operator != null) num_2 += value;
   else num_1 += value;
 
-  document.querySelector(".results").innerText =
-    operator != null ? num_2 : num_1;
+  resultDiv.innerText = operator != null ? num_2 : num_1;
 }
 
 function calculate_results() {
@@ -70,6 +73,7 @@ function calculate_results() {
   num_1 = operate(oP, n1, n2);
   num_2 = 0;
 
+  if (num_1 > maxNum) return "To large!";
   return num_1;
 }
 
