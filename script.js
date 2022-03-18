@@ -73,7 +73,10 @@ function calculate_results() {
   num_1 = operate(oP, n1, n2);
   num_2 = 0;
 
-  if (num_1 > maxNum) return "To large!";
+  if (num_1 > maxNum) {
+    reset();
+    return "To large!";
+  }
   return num_1;
 }
 
