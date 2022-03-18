@@ -1,10 +1,12 @@
 :root {
   --buttonSize: 64px;
   --buttonMargin: 8px;
+  --border-radius: 12px;
 }
 
 * {
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 div {
@@ -18,20 +20,26 @@ div {
 
 .calculator {
   padding: 32px;
-  border-radius: 16px;
   display: flex;
   flex-direction: column;
 }
 
 .results {
+  border-radius: var(--border-radius);
+  font-weight: 900;
+  box-shadow: inset -3px -3px 5px #ffffff30, inset 3px 3px 15px #00000030;
   display: flex;
   align-items: center;
   justify-content: end;
   font-size: 32pt;
   overflow: hidden;
 
-  width: calc(calc(var(--buttonSize) * 4) + 40px);
+  width: calc(calc(var(--buttonSize) * 4) + 32px);
+
   height: calc(var(--buttonSize) + 16px);
+
+  margin-left: 8px;
+  margin-bottom: 24px;
   padding-right: 16px;
 }
 
@@ -52,8 +60,11 @@ button {
   margin: var(--buttonMargin);
   width: var(--buttonSize);
   height: var(--buttonSize);
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   border: none;
+
+  box-shadow: -1px -1px 3px #ffffff30, 1px 1px 10px #00000030;
+  background-color: white;
 }
 
 button[id="0"] {

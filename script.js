@@ -69,7 +69,7 @@ function calculate_results() {
   num_1 = operate(oP, n1, n2);
   num_2 = 0;
 
-  return num_1.toString(maxNum);
+  return num_1;
 }
 
 function reset() {
@@ -128,9 +128,10 @@ document.addEventListener("keyup", (key) => {
     "+",
     "=",
     "%",
+    "Backspace",
   ];
-
   if (!acceptableValues.includes(key.key)) return;
+  if (key.key == "Backspace") return removeLastNumber();
 
   let button = document.getElementById(key.key);
 
@@ -141,3 +142,12 @@ document.addEventListener("keyup", (key) => {
 
   button.click();
 });
+
+function removeLastNumber() {
+  operator == null
+    ? (num_1 = num_1.toString().slice(0, -1))
+    : (num_2 = num_2.toString().slice(0, -1));
+
+  document.querySelector(".results").innerText =
+    operator == null ? num_1 : num_2;
+}
