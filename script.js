@@ -2,32 +2,33 @@ let num_1 = 0;
 let num_2 = 0;
 let maxNum = 999999999;
 let operator = null;
+let resultDiv = document.querySelector(".results");
 
-function add(num_1, num_2) {
+function add() {
   return +num_1 + +num_2;
 }
 
-function subtract(num_1, num_2) {
+function subtract() {
   return +num_1 - +num_2;
 }
 
-function multiply(num_1, num_2) {
+function multiply() {
   return +num_1 * +num_2;
 }
 
-function divide(num_1, num_2) {
+function divide() {
   return +num_1 / +num_2;
 }
 
-function operate(operator, num_1, num_2) {
-  if (operator == "+") return add(num_1, num_2);
-  if (operator == "-") return subtract(num_1, num_2);
-  if (operator == "*") return multiply(num_1, num_2);
-  if (operator == "/") return divide(num_1, num_2);
+function operate(operator) {
+  if (operator == "+") return add();
+  if (operator == "-") return subtract();
+  if (operator == "*") return multiply();
+  if (operator == "/") return divide();
 }
 
 function results(value) {
-  document.querySelector(".results").innerText = value;
+  resultDiv.innerText = value;
 }
 
 const buttons = [...document.getElementsByTagName("button")];
@@ -42,8 +43,6 @@ buttons.forEach((but) => {
 });
 
 function storeValues(value) {
-  let resultDiv = document.querySelector(".results");
-
   if (value.match(/=/g)) return (resultDiv.innerText = calculate_results());
 
   if (value.match(/\W/g)) {
@@ -85,15 +84,14 @@ function reset() {
   num_2 = 0;
   operator = null;
 
-  document.querySelector(".results").innerText = 0;
+  resultDiv.innerText = 0;
 }
 
 function percentage() {
   if (operator == null) num_1 = num_1 / 100;
   else num_2 = num_2 / 100;
 
-  document.querySelector(".results").innerText =
-    operator == null ? num_1 : num_2;
+  resultDiv.innerText = operator == null ? num_1 : num_2;
 }
 
 function negativeNumber() {
@@ -106,14 +104,12 @@ function negativeNumber() {
       ? Math.abs(+num_2)
       : -Math.abs(+num_2);
 
-  document.querySelector(".results").innerText =
-    operator == null ? num_1 : num_2;
+  resultDiv.innerText = operator == null ? num_1 : num_2;
 }
 
 function addDot() {
-  if (document.querySelector(".results").innerText.includes(".")) return;
-  document.querySelector(".results").innerText =
-    operator == null ? (num_1 += ".") : (num_2 += ".");
+  if (resultDiv.innerText.includes(".")) return;
+  resultDiv.innerText = operator == null ? (num_1 += ".") : (num_2 += ".");
 }
 
 document.getElementById("=").addEventListener("click", operate());
