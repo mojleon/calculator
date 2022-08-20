@@ -114,7 +114,7 @@ function addDot() {
 
 document.getElementById("=").addEventListener("click", operate());
 
-document.addEventListener("keyup", (key) => {
+document.addEventListener("keyup", (but) => {
   let acceptableValues = [
     "0",
     "1",
@@ -135,10 +135,10 @@ document.addEventListener("keyup", (key) => {
     "%",
     "Backspace",
   ];
-  if (!acceptableValues.includes(key.key)) return;
-  if (key.key == "Backspace") return removeLastNumber();
+  if (!acceptableValues.includes(but.key)) return;
+  if (but.key == "Backspace") return removeLastNumber();
 
-  let button = document.getElementById(key.key);
+  let button = document.getElementById(but.key);
 
   button.classList.add("butColor");
   setTimeout(() => {
