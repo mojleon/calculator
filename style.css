@@ -13,8 +13,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 20px);
 }
 
 .calculator {
@@ -83,10 +82,11 @@ button[id="0"] {
 
 button:hover,
 .butColor {
-  background-color: greenyellow;
+  color: white;
+  background-color: #333;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 440px) {
   * {
     overflow: visible;
   }
