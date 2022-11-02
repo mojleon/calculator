@@ -9,11 +9,10 @@
   overflow: hidden;
 }
 
-div {
+main {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100vw;
   height: 100vh;
 }
@@ -50,7 +49,7 @@ div {
 }
 
 .numbers {
-  max-width: calc(calc(var(--buttonSize) * 4) + 64px);
+  width: calc(calc(var(--buttonSize) * 4) + 64px);
   display: flex;
   flex-wrap: wrap;
 }
@@ -85,4 +84,17 @@ button[id="0"] {
 button:hover,
 .butColor {
   background-color: greenyellow;
+}
+
+@media screen and (max-width: 400px) {
+  * {
+    overflow: visible;
+  }
+  .calculator {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    scale: 0.6;
+    max-width: 360px;
+  }
 }
